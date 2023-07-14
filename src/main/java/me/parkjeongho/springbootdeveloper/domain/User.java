@@ -28,16 +28,21 @@ public class User implements UserDetails { //UserDetails를 상속받아 인증 
     @Column(name = "password")
     private String password;
 
+    @Column(name = "nickname", unique = true)
+    private String nickname;
+
     @Builder
-    public User(String email, String password, String auth) {
+    public User(String email, String password, String nickname) {
         this.email = email;
         this.password = password;
+        this.nickname = nickname;
     }
 
     @Override //권한 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("user"));
     }
+
     //사용자의 id를 반환(고유한 값)
     @Override
     public String getUsername() {
@@ -76,5 +81,11 @@ public class User implements UserDetails { //UserDetails를 상속받아 인증 
     public boolean isEnabled() {
         //계정이 사용 가능한지 확인하는 로직
         return true; //true -> 사용 가능
+    }
+
+    public User update(String nickname) {
+        this.nickname = nickname;
+
+        return this;
     }
 }

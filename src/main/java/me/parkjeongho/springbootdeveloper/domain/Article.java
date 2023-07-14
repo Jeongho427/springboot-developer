@@ -26,16 +26,8 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Builder
-    public Article(String title, String content) { //빌드 패턴으로 객체 생성
-        this.title = title;
-        this.content = content;
-    }
-
-    public void update(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
+    @Column(name = "author", nullable = false)
+    private String author;
 
     @CreatedDate //엔티티가 생성될 때 생성 시간 저장
     @Column(name = "created_at")
@@ -44,5 +36,15 @@ public class Article {
     @LastModifiedDate //엔티티가 수정될 때 수정 시간 저장
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 
+    @Builder
+    public Article(String author, String title, String content) { //빌드 패턴으로 객체 생성
+        this.author = author;
+        this.title = title;
+        this.content = content;
+    }
 }
