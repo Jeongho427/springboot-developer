@@ -7,23 +7,23 @@ spring:
         format_sql: true
     #테이블 생성 후에 data.sql 실행
     defer-datasource-initialization: true
-
   datasource:
     url: jdbc:h2:mem:testdb
     username: sa
-
   h2:
     console:
       enabled: true
-
-jwt:
-  issuer: ajufresh@gmail.com
-  secret_key: study-springboot
-
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: 882541217037-45jqdvkvlh9ugifcnuvq9gpf8d1f76cq.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ///
+            client-secret: ///
+            scope:
+              - email
+              - profile
+
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: study-springboot
